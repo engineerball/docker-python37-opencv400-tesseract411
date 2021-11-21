@@ -12,7 +12,7 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+          DOCKER_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.IMAGE_NAME }}
           VERSION=latest
           SHORTREF=${GITHUB_SHA::8}
 
