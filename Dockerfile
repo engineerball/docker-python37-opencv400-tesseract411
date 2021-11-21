@@ -37,9 +37,9 @@ RUN apt-get -qq update \
     && pip install numpy \
     && pip install pillow \
     && wget -q https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip \
-    && unzip -qq opencv.zip -d /opt \
+    && unzip -qq opencv.zip -d /opt/build \
     && rm -rf opencv.zip \
-    && mkdir /opt/build/opencv-${OPENCV_VERSION}/cmake_binary \
+    && mkdir -p /opt/build/opencv-${OPENCV_VERSION}/cmake_binary \
     && cd /opt/build/opencv-${OPENCV_VERSION}/cmake_binary \
     && cmake -DBUILD_TIFF=ON \
         -DBUILD_opencv_java=OFF \
@@ -103,7 +103,7 @@ RUN apt-get -qq update \
 #     rm -Rf tesseract-${TESSERACT_VERSION} ${TESSERACT_VERSION}.zip
 
 # download the relevant Tesseract OCRB Language Packages
-RUN wget https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata  \
+RUN wget https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata \
     && wget https://github.com/Shreeshrii/tessdata_ocrb/raw/master/ocrb.traineddata \
     && mkdir -p /usr/local/share/tessdata/ \
     && mv *.traineddata /usr/local/share/tessdata/
